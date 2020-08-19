@@ -12,6 +12,7 @@
 			margin:10px;
 			font-size: 20px;
 			border-radius: 5px;
+			background-color: #fff;
 		}
 		#toolbar
 		{
@@ -37,14 +38,41 @@
 
 	</style>
 	<script>
+		var num1 = 0, num2=0;
 		function make_bold(){
 			document.execCommand('bold', false, null);
+			num1++;
+			console.log(num1)
+			if (num1%2)
+			{
+				document.getElementsByClassName("boldbutton")[0].style.backgroundColor="black"
+				document.getElementsByClassName("boldbutton")[0].style.color="white"
+			}
+			else
+			{
+				document.getElementsByClassName("boldbutton")[0].style.backgroundColor="white"
+				document.getElementsByClassName("boldbutton")[0].style.color="black"
+			}
+			
 		}
 		function make_italic(){
-			document.execCommand('italic', false, null);
+			document.execCommand('italic', false, null);num2++;
+			console.log(num2)
+			if (num2%2)
+			{
+				document.getElementsByClassName("italicbutton")[0].style.backgroundColor="black"
+				document.getElementsByClassName("italicbutton")[0].style.color="white"
+			}
+			else
+			{
+				document.getElementsByClassName("italicbutton")[0].style.backgroundColor="white"
+				document.getElementsByClassName("italicbutton")[0].style.color="black"
+			}
+		
 		}
 		function make_undo(){
 			document.execCommand('undo', false, null);
+			
 		}
 		function make_arial(){
 			document.execCommand('fontName', false, "Arial");
@@ -52,13 +80,20 @@
 		function make_courier(){
 			document.execCommand('fontName', false, "Courier");
 		}
+		function inc_fsize(){
+			document.execCommand( "increaseFontSize", false, "" );         
+         }
+         function dec_fsize(){
+// decrease selection font size         
+document.execCommand( "decreaseFontSize", false, "" );  
+		}
 	</script>
 <div id="toolbar">
 	<ul style="list-style-type: none;">
 		<li style="display: inline">
-			<button id="buttons" onclick="make_bold()" >Bold</button></li>
+			<button id="buttons" class="boldbutton" onclick="make_bold()" >Bold</button></li>
 		<li style="display: inline">
-			<button id="buttons" onclick="make_italic()" >Italic</button></li>
+			<button id="buttons" class="italicbutton" onclick="make_italic()" >Italic</button></li>
 
 		<li style="display: inline">
 			<button id="buttons" onclick="make_undo()" >Undo</button></li>
@@ -67,6 +102,11 @@
 			<button id="buttons" onclick="make_arial()" >arial</button></li>
 		<li style="display: inline">
 			<button id="buttons" onclick="make_courier()" >Courier</button></li>
+		<li style="display: inline">
+			<button id="buttons" onclick="inc_fsize()" >Font++</button></li>
+		<li style="display: inline">
+			<button id="buttons" onclick="dec_fsize()" >Font--</button></li>
+		<!--<li style="display: inline"><input type="number" id="fontsize" name="fontsize" min="1" max="7" step="1"></li>-->
 		</ul></div>
 <div id="writingspace" contenteditable="true"></div>
 </body>
