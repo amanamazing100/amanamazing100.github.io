@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Text Editor</title><!--
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>-->
+</head>
+<body>
+	<style>
+		#buttons
+		{
+			
+			margin:10px;
+			font-size: 20px;
+			border-radius: 5px;
+		}
+		#toolbar
+		{
+			margin: 20px 20px 20px 20px;
+			background-color: #C5D699;
+			border-radius:5px;
+			clear: both;
+		}
+
+		#writingspace
+		{
+			border-width: 3px;
+			border-color: black;
+			border-style: dashed;
+			border-radius: 10px;
+			padding:30px 30px 30px 30px;
+			margin:20px 20px 20px 20px;
+			height: 420px;
+			overflow:scroll;
+			background-color: #ADD8E6;
+
+		}
+
+	</style>
+	<script>
+		function make_bold(){
+			document.execCommand('bold', false, null);
+		}
+		function make_italic(){
+			document.execCommand('italic', false, null);
+		}
+		function make_undo(){
+			document.execCommand('undo', false, null);
+		}
+		function make_arial(){
+			document.execCommand('fontName', false, "Arial");
+		}
+		function make_courier(){
+			document.execCommand('fontName', false, "Courier");
+		}
+	</script>
+<div id="toolbar">
+	<ul style="list-style-type: none;">
+		<li style="display: inline">
+			<button id="buttons" onclick="make_bold()" >Bold</button></li>
+		<li style="display: inline">
+			<button id="buttons" onclick="make_italic()" >Italic</button></li>
+
+		<li style="display: inline">
+			<button id="buttons" onclick="make_undo()" >Undo</button></li>
+
+		<li style="display: inline">
+			<button id="buttons" onclick="make_arial()" >arial</button></li>
+		<li style="display: inline">
+			<button id="buttons" onclick="make_courier()" >Courier</button></li>
+		</ul></div>
+<div id="writingspace" contenteditable="true"></div>
+</body>
+</html>
